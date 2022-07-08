@@ -12,14 +12,13 @@ def arithmetic_arranger(problems, solve=False):
     bottom_line = ""
     dash_line = ""
     result_line = ""
-    arranged_problems = ""  # This string will be displayed in the end.
 
     # Iterate through the problem strings in the problems list.
     for problem in problems:
         # Check string only contains digits or the + or - operators.
-        if re.search("[^\d\+\-]", problem):
-            if re.search("[/]", problem) or re.search("[*]", problem):
-                return "Error: Operator must be + or -."
+        if re.search("[^\s\d.+-]", problem):
+            if re.search("[/*]", problem):
+                return "Error: Operator must be '+' or '-'."
             else:
                 return "Error: Numbers must only contain digits."
 
@@ -46,6 +45,7 @@ def arithmetic_arranger(problems, solve=False):
         bottom = operator + str(second_number).rjust(line_length - 1)
         result = str(sum).rjust(line_length)
         # Create a dashed line with a number of dashes equal to the line length.
+        dashes = ""
         for i in range(line_length):
             dashes += "-"
 
@@ -64,10 +64,8 @@ def arithmetic_arranger(problems, solve=False):
 
     # Arrange the lines with newlines to separate each string.
     if solve is True:
-        arranged_problems = (
-            top_line + "\n" + bottom_line + "\n" + dash_line + "\n" + result_line
-        )
+        arranged = top_line + "\n" + bottom_line + "\n" + dash_line + "\n" + result_line
     else:
-        arranged_problems = top_line + "\n" + bottom_line + "\n" + dash_line
-
-    return arranged_problems
+        arranged = top_line + "\n" + bottom_line + "\n" + dash_line
+    # print(arranged)
+    return arranged
