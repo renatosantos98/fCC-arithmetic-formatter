@@ -50,7 +50,7 @@ def arithmetic_arranger(problems, solve=False):
             dashes += "-"
 
         # If problem is not the last one in the list, append the justified numbers to the displayed lines and add 4 spaces for the next problem.
-        if problem != problem[-1]:
+        if problem != problems[-1]:
             top_line += top + "    "
             bottom_line += bottom + "    "
             dash_line += dashes + "    "
